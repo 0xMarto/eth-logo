@@ -1,1 +1,1 @@
-# eth-icon
+# eth-logo
