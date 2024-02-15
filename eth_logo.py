@@ -1,92 +1,31 @@
-"""
-Print next ascii art using only `loop` statements (size: 38x37):
-                  #
-                 ###
-                #####
-               #######
-              #########
-             ###########
-            #############
-           ###############
-          #################
-         ###################
-        #####################
-       #######################
-      #########################
-     ###########################
-    #############################
-   ###############################
-  #################################
- ###################################
-#####################################
-  #################################
-#    ###########################    #
- ###    #####################    ###
-  #####    ###############    #####
-   #######    #########    #######
-    #########     #     #########
-     ############   ############
-      #########################
-       #######################
-        #####################
-         ###################
-          #################
-           ###############
-            #############
-             ###########
-              #########
-               #######
-                #####
-                 ###
-                  #
-"""
-SIZE = 38
-HASH = '#'
-SPACE = ' '
-GAP = '+'
+# Eth Logo is a little library to print an Ethereum logo on sout
 
-# Calculate sizes (applying min resolution limit and rounding)
-height = max((SIZE // 3) * 3, 15)  # Size: 15 is the smallest
-height = height + 2 if height % 2 == 0 else height - 1
-width = height - 1
-top = height // 2
-bottom = height // 3
-middle = height - top - bottom
-print(f'height: {height}, top: {top}, middle: {middle}\n')  # Only for debug
 
-for i in range(0, top):
-    hashes = HASH * (2 * i + 1)
-    spaces = SPACE * (top - i - 1)
-    # print(spaces + hashes + spaces)
-    print(spaces + hashes + spaces, f' | i: {i}, end: {top}')  # Only for debug
+def print_logo(size=20, char='#', back=' ', pad=' ') -> None:
+    """
+    Usage example: print_logo()
 
-for i in range(top, top + middle):
-    x = i - top
-    # side_hashes = HASH * (x * 2 - 1) if x < middle - 1 else HASH * (x * 2)
-    if x == 0:
-        side_hashes = HASH * 0
-        gap = GAP * 2
-        mid_hashes = HASH * (2 * i - 5)
-    elif x < middle - 2:
-        side_hashes = HASH * (x * 2 - 1)
-        gap = GAP * 4
-        mid_hashes = HASH * ((2 * i - 5) - (8 * x))
-    elif x == middle - 2:
-        side_hashes = HASH * (x * 2 - 1)
-        gap = GAP * 5
-        mid_hashes = HASH
-    else:
-        side_hashes = HASH * (x * 2)
-        gap = GAP * 1
-        mid_hashes = gap
-
-    hashes = side_hashes + gap + mid_hashes + gap + side_hashes
-    spaces = SPACE * (x - 1)
-    # print(spaces + hashes + spaces)
-    print(spaces + hashes + spaces, f' | i: {i}, end: {top + middle}, x: {x}')  # Only for debug
-
-for i in range(top + middle, height + 1):
-    hashes = HASH * (2 * (height - i) + 1)
-    spaces = SPACE * (i - top - 1)
-    # print(spaces + hashes + spaces)
-    print(spaces + hashes + spaces, f' | i: {i}, end: {height + 1}')  # Only for debug
+    :param size: logo height, could  be adjusted to fit proportions
+    :param char: char to print each pixel of the logo
+    :param back: char used to print each pixel of the background
+    :param pad: string to print at the start of each line
+    """
+    height = max((size // 3) * 3, 15)
+    height = height + 2 if height % 2 == 0 else height - 1
+    top, bottom = height // 2, height // 3
+    mid = height - (top + bottom)
+    for i in range(height + 1):
+        if i < top:
+            hashes = char * (2 * i + 1)
+        elif i < top + mid:
+            x = i - top
+            side = char * (x * 2 - 1 if x < mid - 1 else x * 2)
+            aux = 2 if x == 0 else 1 if x == mid - 1 else 5 if x == mid - 2 else 4
+            gap = back * aux
+            aux = 2 * i - 5 - 8 * x
+            core = char * aux if x < mid - 2 else char if x == mid - 2 else back
+            hashes = side + gap + core + gap + side
+        else:
+            hashes = char * (2 * (height - i) + 1)
+        spaces = back * (abs(i - top) - 1)
+        print(pad + spaces + hashes + spaces)
