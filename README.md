@@ -1,28 +1,40 @@
 # eth-logo
-[//]: # ([![PyPI version]&#40;https://badge.fury.io/py/eth-account.svg&#41;]&#40;https://badge.fury.io/py/eth-logo&#41;)
-[//]: # ([![Python versions]&#40;https://img.shields.io/pypi/pyversions/eth-account.svg&#41;]&#40;https://pypi.python.org/pypi/eth-logo&#41;)
-Print Ethereum logo of any size on your stout.
+[![PyPI version](https://badge.fury.io/py/eth-logo.svg)](https://badge.fury.io/py/eth-logo)
+[![Python versions](https://img.shields.io/pypi/pyversions/eth-logo.svg)](https://pypi.python.org/pypi/eth-logo)
+
+Python lib to print Ethereum logo of any size and style on your terminal or standard output.
 
 ## Quickstart
-```sh
-python3 -m pip install eth-logo
+```shell
+pip install eth-logo
+```
+or 
+```shell
+python3 -m pip install eth-logo`
 ```
 
 ### Usage (in terminal)
-```python
+```sh
 # Optionals: print-eth SIZE CHAR [defaults: size=20 char='#']
 print-eth
 print-eth 30 %
 ```
+<div align="center">
+    <img src="./samples/eth_logo_sample_1.png" alt="terminal sample 1">
+    <img src="./samples/eth_logo_sample_2.png" alt="terminal sample 2">
+</div>
+
 
 ### Usage (in python)
-```python
+```pycon
 from eth_logo import print_eth
 
 # Optionals: Size, Character, Background, Padding 
 print_eth(size=20, char='#', back=' ', pad=' ')
 ```
-
+<div align="center">
+    <img src="./samples/eth_logo_sample_3.png" alt="terminal sample 3">
+</div>
 
 ### Contribute
 You can set up your dev environment with:
