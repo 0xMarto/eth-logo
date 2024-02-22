@@ -8,10 +8,6 @@ Python lib to print Ethereum logo of any size and style on your terminal or stan
 ```shell
 pip install eth-logo
 ```
-or 
-```shell
-python3 -m pip install eth-logo`
-```
 
 ### Usage (in terminal)
 ```sh
@@ -20,8 +16,8 @@ print-eth
 print-eth 30 %
 ```
 <div align="center">
-    <img src="./samples/eth_logo_sample_1.png" alt="terminal sample 1">
-    <img src="./samples/eth_logo_sample_2.png" alt="terminal sample 2">
+    <img src="https://raw.githubusercontent.com/0xMarto/eth-logo/master/samples/eth_logo_sample_1.png" alt="sample 1">
+    <img src="https://raw.githubusercontent.com/0xMarto/eth-logo/master/samples/eth_logo_sample_2.png" alt="sample 2">
 </div>
 
 
@@ -33,7 +29,7 @@ from eth_logo import print_eth
 print_eth(size=20, char='#', back=' ', pad=' ')
 ```
 <div align="center">
-    <img src="./samples/eth_logo_sample_3.png" alt="terminal sample 3">
+    <img src="https://raw.githubusercontent.com/0xMarto/eth-logo/master/samples/eth_logo_sample_3.png" alt="sample 3">
 </div>
 
 ### Contribute
