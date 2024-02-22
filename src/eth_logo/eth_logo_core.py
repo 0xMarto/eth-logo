@@ -1,7 +1,6 @@
-# Eth Logo is a little library to print an Ethereum logo on sout
+#!/usr/bin/python
 
-
-def print_logo(size=20, char='#', back=' ', pad=' ') -> None:
+def print_eth(size=20, char='#', back=' ', pad=' '):
     """
     Usage example: print_logo()
 

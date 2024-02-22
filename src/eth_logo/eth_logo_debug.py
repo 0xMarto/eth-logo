@@ -1,5 +1,9 @@
+#!/usr/bin/python
 """
-Print next ascii art using only `loop` statements (size: 38x37):
+This a development file to test new features with no optimizations.
+Focused on readability to test things before migration to `eth_logo_core.py`
+
+Example:
 > Size: 20
           #
          ###
@@ -24,7 +28,7 @@ Print next ascii art using only `loop` statements (size: 38x37):
           #
 > Printed size: (21, 19)
 
-# TODO Next Version:
+# TODO Make printed logo more accurate (losing top/bottom symetry)
 #           #
 #          ###
 #         #####
@@ -83,10 +87,11 @@ for i in range(top, top + middle):
         gap = GAP * 5
         mid_hashes = HASH
     else:
-        # x == middle - 1 (last)
+        # Case: x == middle - 1 (last)
         side_hashes = HASH * (x * 2)
         gap = GAP * 1
         mid_hashes = gap
+        # Next version test code
         # spaces = SPACE * x
 
     hashes = side_hashes + gap + mid_hashes + gap + side_hashes
@@ -95,8 +100,8 @@ for i in range(top, top + middle):
     print(PAD + spaces + hashes + spaces, f' | i: {i}, end: {top + middle}, x: {x}')  # Only for debug
 
 for i in range(top + middle, height + 1):
+    # Next version test code
     # if i % 2 != 0 or i == top + middle:
-    # if i % 2 != 0 or i <= top + middle + 1:
     #     continue
 
     hashes = HASH * (2 * (height - i) + 1)
@@ -110,5 +115,3 @@ def get_logo_size(size):
     _height = _height + 2 if _height % 2 == 0 else _height - 1
     _width = _height - 1
     return _height + 1, _width
-
-
