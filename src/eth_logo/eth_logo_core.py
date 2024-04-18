@@ -1,4 +1,7 @@
 #!/usr/bin/python
+import inspect
+import re
+
 
 def print_eth(size=20, char='#', back=' ', pad=' '):
     """
@@ -28,3 +31,28 @@ def print_eth(size=20, char='#', back=' ', pad=' '):
             hashes = char * (2 * (height - i) + 1)
         spaces = back * (abs(i - top) - 1)
         print(pad + spaces + hashes + spaces)
+
+
+def print_eth_code():
+    """
+    Display the source code of the 'print_eth' function.
+    """
+    print()
+    source_lines, _ = inspect.getsourcelines(print_eth)
+
+    # Get the indentation of the function definition statement (first line)
+    indentation = len(source_lines[0]) - len(source_lines[0].lstrip())
+
+    # Print each line of the source code with correct indentation
+    skip_description = False
+    for line in source_lines:
+        # Skip printing function description
+        if skip_description:
+            if '"""' in line:
+                skip_description = False
+            continue
+        if '"""' in line:
+            skip_description = True
+            continue
+        print(line[indentation:].rstrip())
+    print()
